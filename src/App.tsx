@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Container } from '@material-ui/core';
 import './App.css';
+import Header from "../src/components/Header"
+import TodoListItems from "./components/Todo-list-items/TodoListItems";
+import Buttons from "./components/Buttons/Buttons";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    type itemType = {id: number, task:(string | number)};
+    type todoArrayType = Array<itemType>;
+    const todoArray: todoArrayType = [
+        {id: 1, task: "Learn React"},
+        {id: 2, task: "Learn Angular"},
+        {id: 3, task: "Learn TypeScript"}
+    ];
+    return (
+        <Container maxWidth="xs">
+            <Header/>
+            <Buttons />
+            <TodoListItems todoArray={todoArray} />
+        </Container>
+    );
 }
 
 export default App;

@@ -1,0 +1,23 @@
+.item-list {
+    border: 1px solid burlywood;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 2px;
+    display: inline-block;
+    width: 200px;
+    cursor: pointer;
+}
+
+#list button {
+    height: 42px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+}
+
+.important {
+    color: orangered;
+}
+
+.completed {
+    text-decoration: line-through;
+}
