@@ -5,6 +5,7 @@ import {Button} from "@material-ui/core";
 interface propType {
     id: number
     task: string
+    onDelete: (id: number) => void
 }
 
 interface stateType {
@@ -21,8 +22,8 @@ export default class TodoItem extends React.Component<propType, stateType> {
         };
     }
 
-    onTaskClickHandler = () => this.setState({done: !this.state.done});
-    onImportantHandler = () => this.setState({important: !this.state.important});
+    onTaskClickHandler = () => this.setState(state => ({done: !state.done}))
+    onImportantHandler = () => this.setState(state => ({important: !state.important}))
 
     render() {
         return (
@@ -33,7 +34,7 @@ export default class TodoItem extends React.Component<propType, stateType> {
                     onClick={this.onTaskClickHandler}>
                     {this.props.task}
                 </li>
-                <Button>-</Button>
+                <Button onClick={() => this.props.onDelete(this.props.id)}>-</Button>
                 <Button onClick={this.onImportantHandler}>!</Button>
             </>
         )
