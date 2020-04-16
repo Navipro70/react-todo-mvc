@@ -4,38 +4,27 @@ import {Button} from "@material-ui/core";
 
 interface propType {
     id: number
-    task: string
-    onDelete: (id: number) => void
-}
-
-interface stateType {
-    done: boolean
+    task: (string | number)
+    completed: boolean
     important: boolean
+    onDelete: (id: number) => void
+    onCompletedHandler: (completed: boolean, id: number) => void
+    onImportantHandler: (important: boolean, id: number) => void
 }
 
-export default class TodoItem extends React.Component<propType, stateType> {
-    constructor(props: propType) {
-        super(props);
-        this.state = {
-            done: false,
-            important: false
-        };
-    }
-
-    onTaskClickHandler = () => this.setState(state => ({done: !state.done}))
-    onImportantHandler = () => this.setState(state => ({important: !state.important}))
-
+export default class TodoItem extends React.Component<propType> {
     render() {
+        const {completed, important, id, task, onCompletedHandler, onImportantHandler, onDelete} = this.props;
         return (
             <>
                 <li className={`item-list
-                ${this.state.done ? "completed" : null} 
-                ${this.state.important ? "important" : null}`}
-                    onClick={this.onTaskClickHandler}>
-                    {this.props.task}
+                ${completed ? "completed" : null} 
+                ${important ? "important" : null}`}
+                    onClick={() => onCompletedHandler(completed, id)}>
+                    {task}
                 </li>
-                <Button onClick={() => this.props.onDelete(this.props.id)}>-</Button>
-                <Button onClick={this.onImportantHandler}>!</Button>
+                <Button onClick={() => onDelete(id)}>-</Button>
+                <Button onClick={() => onImportantHandler(important, id)}>!</Button>
             </>
         )
     }
