@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, FC} from "react";
 import {TextField, Button} from "@material-ui/core";
 import "./CommonStyles.css";
 
-type propsType = { addTask: (task: (string | number)) => void }
+type propsType = { addTask: (task: string) => void }
 
-const CustomInput = (props: propsType) => {
+const CustomInput: FC<propsType> = (props) => {
     const [inputValue, setInputValue] = useState("");
     const addTaskHandler = () => {
         props.addTask(inputValue);

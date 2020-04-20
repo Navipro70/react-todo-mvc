@@ -11,7 +11,6 @@ interface propsType {
 }
 
 export default class Buttons extends React.Component<propsType>{
-
     render() {
         const styles = {
             backgroundColor: "blue",

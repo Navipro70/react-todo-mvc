@@ -1,9 +1,8 @@
-import React from "react";
+import React, {FC} from "react";
 import TodoItem from "./Todo-item";
 import "./Todo.css";
+import { todoArrayType } from "../../App";
 
-type itemType = { id: number, task: (string | number), completed: boolean, important: boolean };
-type todoArrayType = Array<itemType>;
 type propsType = {
     todoArray: todoArrayType
     completedBut: boolean
@@ -13,7 +12,7 @@ type propsType = {
     onDelete: (id: number) => void
 }
 
-const TodoListItems = (props: propsType) => {
+const TodoListItems: FC<propsType> = (props) => {
     let showedArray;
     showedArray = props.todoArray
                     .map(item => <TodoItem {...item}

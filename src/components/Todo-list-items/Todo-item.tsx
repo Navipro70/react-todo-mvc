@@ -4,7 +4,7 @@ import {Button} from "@material-ui/core";
 
 interface propType {
     id: number
-    task: (string | number)
+    task: string
     completed: boolean
     important: boolean
     onDelete: (id: number) => void

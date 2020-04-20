@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Container} from '@material-ui/core';
 import './App.css';
 import Header from "../src/components/Header"
@@ -7,19 +7,19 @@ import Buttons from "./components/Buttons/Buttons";
 import CustomInput from "./components/Input";
 import Statistic from './components/Statistic';
 
+type itemType = { id: number, task: string, completed: boolean, important: boolean };
+export type todoArrayType = Array<itemType>;
 
-function App() {
-    type itemType = { id: number, task: (string | number), completed: boolean, important: boolean };
-    type todoArrayType = Array<itemType>;
+const  App:FC = () => {
     const todoArray: todoArrayType = [
         {id: 1, task: "Learn React", completed: false, important: false},
         {id: 2, task: "Learn Angular", completed: false, important: false},
         {id: 3, task: "Learn TypeScript", completed: false, important: false}
     ];
 
-    const [todoState, setTodoState] = useState(todoArray);
+    const [todoState, setTodoState] = useState<todoArrayType>(todoArray);
 
-    const onDelete = (id: number) => {
+    const onDelete = (id: number): void => {
         setTodoState((todoState) => todoState.filter(item => {
             if (item.id === id && item.completed) setFinishedCount(finishedCount => finishedCount -1);
             else if (item.id === id && !item.completed) setActiveCount(activeCount => activeCount - 1);
@@ -27,12 +27,12 @@ function App() {
         }));
     };
 
-    const addTask = (task: (string | number)) => {
+    const addTask = (task: string): void => {
         setTodoState(todoState => [{id: Math.random(), task, completed: false, important: false}, ...todoState])
         setActiveCount(activeCount => activeCount+1);
     };
 
-    const onCompletedHandler = (completed: boolean, id: number) => {
+    const onCompletedHandler = (completed: boolean, id: number): void => {
         setTodoState((todoState) => todoState.map(item => {
             if (item.id === id) item.completed = !completed;
             if (item.completed && item.id === id) {
@@ -47,30 +47,30 @@ function App() {
         }));
     };
 
-    const onImportantHandler = (important: boolean, id: number) => {
+    const onImportantHandler = (important: boolean, id: number): void => {
         setTodoState((todoState) => todoState.map(item => {
             if (item.id === id) item.important = !important;
             return item
         }))
     };
 
-    const [completedBut, setCompletedBut] = useState(false);
-    const [activeBut, setActiveBut] = useState(false);
-    const onCompletedChanger: () => void = () => {
+    const [completedBut, setCompletedBut] = useState<boolean>(false);
+    const [activeBut, setActiveBut] = useState<boolean>(false);
+    const onCompletedChanger = (): void => {
         setActiveBut(false);
         setCompletedBut(true);
     };
-    const onActiveChanger: () => void = () => {
+    const onActiveChanger = (): void => {
         setActiveBut(true);
         setCompletedBut(false);
     };
-    const onAllChanger: () => void = () => {
+    const onAllChanger = (): void => {
         setActiveBut(false);
         setCompletedBut(false);
     };
 
-    const [activeCount, setActiveCount] = useState(todoState.filter(item => !item.completed).length);
-    const [finishedCount, setFinishedCount] = useState(todoState.filter(item => item.completed).length);
+    const [activeCount, setActiveCount] = useState<number>(todoState.filter(item => !item.completed).length);
+    const [finishedCount, setFinishedCount] = useState<number>(todoState.filter(item => item.completed).length);
 
     return (
         <Container maxWidth="xs">
@@ -85,6 +85,6 @@ function App() {
             />
         </Container>
     );
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./CommonStyles.css";
 
@@ -7,7 +7,7 @@ type propsType = {
     finishedCount: number
 }
 
-const Statistic = (props: propsType) => {
+const Statistic: FC<propsType> = (props) => {
     return (
         <span className="statistic">{props.finishedCount} done, {props.activeCount} left</span>
     )
