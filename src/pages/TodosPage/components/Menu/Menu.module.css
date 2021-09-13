@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 20px;
+  padding: 10px 15px;
+  color: #777;
+  border-top: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgb(0 0 0 / 20%),
+    0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgb(0 0 0 / 20%);
+  z-index: 1;
+}
+
+.filterContainer {
+  z-index: 10;
+}
+
+.filterBtn {
+  color: #777;
+  margin-right: 8px;
+  border: 1px solid rgba(175, 47, 47, 0);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  transition: border-color 0.25s linear;
+}
+
+.selectedFilter {
+  border: 1px solid rgba(175, 47, 47, 0.2);
+}
+
+.filterBtn:hover {
+  border: 1px solid rgba(175, 47, 47, 0.2);
+}
+
+.btn {
+  width: 112px;
+  color: #777;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.btn:hover {
+  text-decoration: underline;
+}

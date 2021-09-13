@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "target": "es6",
     "noEmit": true,
     "strict": true,
@@ -21,8 +25,14 @@
     "outDir": "./dist",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react"
+    "jsx": "react",
+    "allowJs": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

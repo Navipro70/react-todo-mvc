@@ -1,0 +1,36 @@
+.container {
+  max-width: 550px;
+  margin: 20px auto;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 100px;
+  text-align: center;
+}
+
+.todosWrapper {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+}
+
+.footer {
+  text-shadow: 0 1px 0 rgb(255 255 255 / 50%);
+  color: #bfbfbf;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.link {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:visited {
+  color: #4d4d4d;
+  text-decoration: none;
+}
